@@ -34,19 +34,29 @@ Signed-off-by: Lorenzo Pieralisi <lpieralisi@kernel.org>
 
 --- a/drivers/pci/controller/pcie-mt7621.c
 +++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -58,6 +58,7 @@
+@@ -58,7 +58,7 @@
  #define PCIE_PORT_LINKUP		BIT(0)
  #define PCIE_PORT_CNT			3
  
-+#define INIT_PORTS_DELAY_MS		100
- #define PERST_DELAY_MS			100
+-#define PERST_DELAY_MS			100
++#define PERST_DELAY_MS			300
  
  /**
-@@ -374,6 +375,7 @@ static int mt7621_pcie_init_ports(struct
+ * struct mt7621_pcie_port - PCIe port information
+@@ -346,6 +346,8 @@ static void mt7621_pcie_reset_rc_deassert(struct mt7621_pcie *pcie)
+ 
+	list_for_each_entry(port, &pcie->ports, list)
+		mt7621_control_deassert(port);
++
++	msleep(PERST_DELAY_MS);
+ }
+ 
+ static void mt7621_pcie_reset_ep_deassert(struct mt7621_pcie *pcie)
+@@ -383,6 +385,7 @@ static int mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
  		}
  	}
  
-+	msleep(INIT_PORTS_DELAY_MS);
++	msleep(PERST_DELAY_MS);
  	mt7621_pcie_reset_ep_deassert(pcie);
  
  	tmp = NULL;
