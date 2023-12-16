@@ -24,7 +24,7 @@ Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 
 --- a/drivers/pci/controller/pcie-mt7621.c
 +++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -557,7 +557,7 @@ static struct platform_driver mt7621_pci
+@@ -558,7 +558,7 @@ static struct platform_driver mt7621_pci
  	.remove = mt7621_pcie_remove,
  	.driver = {
  		.name = "mt7621-pci",
