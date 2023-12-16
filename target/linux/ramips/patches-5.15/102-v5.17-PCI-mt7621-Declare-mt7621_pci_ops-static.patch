@@ -19,7 +19,7 @@ Reviewed-by: Krzysztof Wilczyński <kw@linux.com>
 
 --- a/drivers/pci/controller/pcie-mt7621.c
 +++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -148,7 +148,7 @@ static void __iomem *mt7621_pcie_map_bus
+@@ -151,7 +151,7 @@ static void __iomem *mt7621_pcie_map_bus
  	return pcie->base + RALINK_PCI_CONFIG_DATA + (where & 3);
  }
  
