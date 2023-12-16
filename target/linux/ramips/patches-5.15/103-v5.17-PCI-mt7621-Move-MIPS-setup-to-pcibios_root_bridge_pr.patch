@@ -79,7 +79,7 @@ Acked-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>   # arch/mips
 -
 -	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
 -	if (!entry) {
--		dev_err(dev, "cannot get memory resource\n");
+-		dev_err(dev, "Cannot get memory resource\n");
 -		return -EINVAL;
 -	}
 -
@@ -104,7 +104,7 @@ Acked-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>   # arch/mips
  static int mt7621_pcie_parse_port(struct mt7621_pcie *pcie,
  				  struct device_node *node,
  				  int slot)
-@@ -557,12 +526,6 @@ static int mt7621_pcie_probe(struct plat
+@@ -558,12 +527,6 @@ static int mt7621_pcie_probe(struct plat
  		goto remove_resets;
  	}
  
