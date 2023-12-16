@@ -23,7 +23,7 @@ Signed-off-by: Lorenzo Pieralisi <lpieralisi@kernel.org>
  
  		if (!mt7621_pcie_port_is_linkup(port)) {
 -			dev_err(dev, "pcie%d no card, disable it (RST & CLK)\n",
--			dev_info(dev, "pcie%d no card, disable it (RST & CLK)\n",
++			dev_info(dev, "pcie%d no card, disable it (RST & CLK)\n",
  				slot);
  			mt7621_control_assert(port);
  			port->enabled = false;
