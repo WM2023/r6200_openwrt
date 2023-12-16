@@ -110,7 +110,7 @@ Acked-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>   # arch/mips
  
 -	err = setup_cm_memory_region(bridge);
 -	if (err) {
--		dev_err(dev, "error setting up iocu mem regions\n");
+-		dev_err(dev, "Error setting up iocu mem regions\n");
 -		goto remove_resets;
 -	}
 -
