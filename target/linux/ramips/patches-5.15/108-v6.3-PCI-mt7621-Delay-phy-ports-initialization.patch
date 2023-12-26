@@ -39,7 +39,7 @@ Signed-off-by: Lorenzo Pieralisi <lpieralisi@kernel.org>
  #define PCIE_PORT_CNT			3
  
 -#define PERST_DELAY_MS			100
-+#define PERST_DELAY_MS			300
++#define PERST_DELAY_MS			250
  
  /**
  * struct mt7621_pcie_port - PCIe port information
