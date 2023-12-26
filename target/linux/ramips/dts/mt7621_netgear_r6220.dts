@@ -222,21 +222,25 @@
 		port@0 {
 			status = "okay";
 			label = "lan4";
+			mac-address-increment = <6>;
 		};
 
 		port@1 {
 			status = "okay";
 			label = "lan3";
+			mac-address-increment = <5>;
 		};
 
 		port@2 {
 			status = "okay";
 			label = "lan2";
+			mac-address-increment = <3>;
 		};
 
 		port@3 {
 			status = "okay";
 			label = "lan1";
+			mac-address-increment = <2>;
 		};
 	};
 };
