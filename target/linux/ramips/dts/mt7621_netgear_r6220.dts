@@ -159,7 +159,7 @@
 		#address-cells = <1>;
 		#size-cells = <1>;
 
-		eeprom_factory_0: eeprom0@0 {
+		eeprom_factory_0: eeprom@0 {
 			reg = <0x0 0x400>;
 		};
 		
@@ -169,7 +169,7 @@
 			#nvmem-cell-cells = <1>;
 		};
 		
-		eeprom_factory_8000: eeprom1@8000 {
+		eeprom_factory_8000: eeprom@8000 {
 			reg = <0x8000 0x400>;
 		};
 	};
@@ -192,8 +192,8 @@
 		compatible = "mediatek,mt76";
 		reg = <0x0 0 0 0 0>;
 		ieee80211-freq-limit = <5000000 6000000>;
-		nvmem-cells = <&eeprom_factory_8000>;
-		nvmem-cell-names = "eeprom1";
+		nvmem-cells = <&eeprom_factory_8000>, <&macaddr_factory_4 4>;
+		nvmem-cell-names = "eeprom", "mac-address";
 	};
 };
 
@@ -204,8 +204,8 @@
 		compatible = "mediatek,mt76";
 		reg = <0x0 0 0 0 0>;
 		ieee80211-freq-limit = <2400000 2500000>;
-		nvmem-cells = <&eeprom_factory_0>;
-		nvmem-cell-names = "eeprom0";
+		nvmem-cells = <&eeprom_factory_0>, <&macaddr_factory_4 3>;
+		nvmem-cell-names = "eeprom", "mac-address";
 	};
 };
 
@@ -217,9 +217,8 @@
 };
 
 &gmac0 {
-	nvmem-cells = <&macaddr_factory_4>;
+	nvmem-cells = <&macaddr_factory_4 2>;
 	nvmem-cell-names = "mac-address";
-	mac-address-increment = <2>;
 };
 
 &gmac1 {
@@ -227,9 +226,8 @@
 	label = "wan";
 	phy-handle = <&ethphy4>;
 
-	nvmem-cells = <&macaddr_factory_4>;
+	nvmem-cells = <&macaddr_factory_4 1>;
 	nvmem-cell-names = "mac-address";
-	mac-address-increment = <1>;
 };
 
 &switch0 {
@@ -237,33 +235,29 @@
 		port@0 {
 			status = "okay";
 			label = "lan4";
-			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cells = <&macaddr_factory_4 8>;
 			nvmem-cell-names = "mac-address";
-			mac-address-increment = <8>;
 		};
 
 		port@1 {
 			status = "okay";
 			label = "lan3";
-			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cells = <&macaddr_factory_4 7>;
 			nvmem-cell-names = "mac-address";
-			mac-address-increment = <7>;
 		};
 
 		port@2 {
 			status = "okay";
 			label = "lan2";
-			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cells = <&macaddr_factory_4 6>;
 			nvmem-cell-names = "mac-address";
-			mac-address-increment = <6>;
 		};
 
 		port@3 {
 			status = "okay";
 			label = "lan1";
-			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cells = <&macaddr_factory_4 5>;
 			nvmem-cell-names = "mac-address";
-			mac-address-increment = <5>;
 		};
 	};
 };
