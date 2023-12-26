@@ -160,16 +160,18 @@
 		#size-cells = <1>;
 
 		eeprom_factory_0: eeprom0@0 {
-			reg = <0x0 0xe00>;
+			reg = <0x0 0x400>;
+		};
+		
+		macaddr_factory_4: macaddr@4 {
+			compatible = "mac-base";
+			reg = <0x4 0x6>;
+			#nvmem-cell-cells = <1>;
 		};
 		
 		eeprom_factory_8000: eeprom1@8000 {
-			reg = <0x8000 0x8e00>;
+			reg = <0x8000 0x400>;
 		};
-	};
-
-	macaddr_factory_4: macaddr@4 {
-		reg = <0x4 0x6>;
 	};
 };
 
