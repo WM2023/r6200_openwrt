@@ -154,9 +154,19 @@
 };
 
 &factory {
-	compatible = "nvmem-cells";
-	#address-cells = <1>;
-	#size-cells = <1>;
+	nvmem-layout {
+		compatible = "fixed-layout";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		eeprom_factory_0: eeprom0@0 {
+			reg = <0x0 0xe00>;
+		};
+		
+		eeprom_factory_8000: eeprom1@8000 {
+			reg = <0x8000 0x8e00>;
+		};
+	};
 
 	macaddr_factory_4: macaddr@4 {
 		reg = <0x4 0x6>;
@@ -179,8 +189,9 @@
 		#size-cells = <2>;
 		compatible = "mediatek,mt76";
 		reg = <0x0 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x8000>;
 		ieee80211-freq-limit = <5000000 6000000>;
+		nvmem-cells = <&eeprom_factory_8000>;
+		nvmem-cell-names = "eeprom1";
 	};
 };
 
@@ -190,8 +201,9 @@
 		#size-cells = <2>;
 		compatible = "mediatek,mt76";
 		reg = <0x0 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x0>;
 		ieee80211-freq-limit = <2400000 2500000>;
+		nvmem-cells = <&eeprom_factory_0>;
+		nvmem-cell-names = "eeprom0";
 	};
 };
 
@@ -205,6 +217,7 @@
 &gmac0 {
 	nvmem-cells = <&macaddr_factory_4>;
 	nvmem-cell-names = "mac-address";
+	mac-address-increment = <2>;
 };
 
 &gmac1 {
@@ -222,25 +235,33 @@
 		port@0 {
 			status = "okay";
 			label = "lan4";
-			mac-address-increment = <6>;
+			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cell-names = "mac-address";
+			mac-address-increment = <8>;
 		};
 
 		port@1 {
 			status = "okay";
 			label = "lan3";
-			mac-address-increment = <5>;
+			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cell-names = "mac-address";
+			mac-address-increment = <7>;
 		};
 
 		port@2 {
 			status = "okay";
 			label = "lan2";
-			mac-address-increment = <3>;
+			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cell-names = "mac-address";
+			mac-address-increment = <6>;
 		};
 
 		port@3 {
 			status = "okay";
 			label = "lan1";
-			mac-address-increment = <2>;
+			nvmem-cells = <&macaddr_factory_4>;
+			nvmem-cell-names = "mac-address";
+			mac-address-increment = <5>;
 		};
 	};
 };
