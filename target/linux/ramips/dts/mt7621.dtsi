@@ -41,6 +41,24 @@
 		compatible = "mti,cpu-interrupt-controller";
 	};
 
+	mmc_fixed_3v3: regulator-3v3 {
+		compatible = "regulator-fixed";
+		regulator-name = "mmc_power";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		enable-active-high;
+		regulator-always-on;
+	};
+
+	mmc_fixed_1v8_io: regulator-1v8 {
+		compatible = "regulator-fixed";
+		regulator-name = "mmc_io";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		enable-active-high;
+		regulator-always-on;
+	};
+
 	palmbus: palmbus@1e000000 {
 		compatible = "palmbus";
 		reg = <0x1e000000 0x100000>;
@@ -97,12 +115,11 @@
 
 			clocks = <&sysc MT7621_CLK_I2C>;
 			clock-names = "i2c";
+			resets = <&rstctrl 16>;
+			reset-names = "i2c";
 
 			#address-cells = <1>;
 			#size-cells = <0>;
-
-			resets = <&rstctrl 16>;
-			reset-names = "i2c";
 
 			pinctrl-names = "default";
 			pinctrl-0 = <&i2c_pins>;
@@ -220,8 +237,6 @@
 			#dma-cells = <1>;
 			#dma-channels = <16>;
 			#dma-requests = <16>;
-
-			status = "disabled";
 		};
 
 		nand: nand@3000 {
@@ -239,9 +254,7 @@
 
 			interrupt-parent = <&gic>;
 			interrupts = <GIC_SHARED 14 IRQ_TYPE_LEVEL_HIGH
-			        GIC_SHARED 15 IRQ_TYPE_LEVEL_HIGH>;
-
-		 	status = "disabled";			
+			        GIC_SHARED 15 IRQ_TYPE_LEVEL_HIGH>;			
 		};
 
 		memc: syscon@5000 {
@@ -265,8 +278,6 @@
 			#dma-cells = <1>;
 			#dma-channels = <1>;
 			#dma-requests = <1>;
-
-			status = "disabled";
 		};
 	};
 
@@ -456,7 +467,6 @@
 
 					port@6 {
 						reg = <6>;
-						label = "cpu";
 						ethernet = <&gmac0>;
 						phy-mode = "rgmii";
 
@@ -480,6 +490,14 @@
 
 		interrupt-parent = <&gic>;
 		interrupts = <GIC_SHARED 20 IRQ_TYPE_LEVEL_HIGH>;
+
+		bus-width = <4>;
+		max-frequency = <48000000>;
+		cap-sd-highspeed;
+		cap-mmc-highspeed;
+		vmmc-supply = <&mmc_fixed_3v3>;
+		vqmmc-supply = <&mmc_fixed_1v8_io>;
+		disable-wp;
 
 		pinctrl-names = "default", "state_uhs";
 		pinctrl-0 = <&sdhci_pins>;
