@@ -79,7 +79,7 @@
 					     "250m", "270m";
 		};
 
-		wdt: wdt@100 {
+		wdt: watchdog@100 {
 			compatible = "mediatek,mt7621-wdt";
 			reg = <0x100 0x100>;
 		};
@@ -418,13 +418,6 @@
 			};
 		};
 
-		gmac1: mac@1 {
-			compatible = "mediatek,eth-mac";
-			reg = <1>;
-			status = "disabled";
-			phy-mode = "rgmii";
-		};
-
 		mdio: mdio-bus {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -453,28 +446,33 @@
 						status = "disabled";
 						reg = <1>;
 						label = "lan3";
+                                                cpu = <&cpu_port0>;
 					};
 
 					port@2 {
 						status = "disabled";
 						reg = <2>;
 						label = "lan2";
+                                                cpu = <&cpu_port0>;
 					};
 
 					port@3 {
 						status = "disabled";
 						reg = <3>;
 						label = "lan1";
+                                                cpu = <&cpu_port0>;
 					};
 
 					port@4 {
 						status = "disabled";
 						reg = <4>;
 						label = "wan";
+                                                cpu = <&cpu_port0>;
 					};
 
-					port@6 {
+					cpu_port0: port@6 {
 						reg = <6>;
+                                                label = "cpu";
 						ethernet = <&gmac0>;
 						phy-mode = "rgmii";
 
