@@ -440,6 +440,7 @@
 						status = "disabled";
 						reg = <0>;
 						label = "lan4";
+                                                cpu = <&cpu_port0>;
 					};
 
 					port@1 {
