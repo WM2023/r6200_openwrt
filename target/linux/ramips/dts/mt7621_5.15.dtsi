@@ -661,12 +661,12 @@
 	};
 
 	cpc: cpc@1fbf0000 {
-		compatible = "mti,mips-cpc", "mediatek,mt7621-cpc";
+		compatible = "mediatek,mt7621-cpc", "mti,mips-cpc";
 		reg = <0x1fbf0000 0x8000>;
 	};
 
 	cdmm: cdmm@1fbf8000 {
-		compatible = "mti,mips-cdmm", "mediatek,mt7621-mc";
+		compatible = "mediatek,mt7621-mc", "mti,mips-cdmm";
 		reg = <0x1fbf8000 0x8000>;
 	};
 };
