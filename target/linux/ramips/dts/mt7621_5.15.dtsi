@@ -237,13 +237,14 @@
 			#dma-cells = <1>;
 			#dma-channels = <16>;
 			#dma-requests = <16>;
+
+                        status = "disabled";
 		};
 
 		nand: nand@3000 {
 		 	compatible = "mediatek,mt7621-nfc", "mediatek,mt7621-nand";
 		 	bank-width = <2>;
-		 	reg = <0x3000 0x800
-				0x3800 0x800>;
+		 	reg = <0x3000 0x800>, <0x3800 0x800>;
 			reg-names = "nfi", "ecc";
 		
 			#address-cells = <1>;
@@ -253,8 +254,8 @@
 			clock-names = "nfi_clk", "nand";
 
 			interrupt-parent = <&gic>;
-			interrupts = <GIC_SHARED 14 IRQ_TYPE_LEVEL_HIGH
-			        GIC_SHARED 15 IRQ_TYPE_LEVEL_HIGH>;			
+			interrupts = <GIC_SHARED 14 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SHARED 15 IRQ_TYPE_LEVEL_HIGH>;			
 		};
 
                 crypto: crypto@4000 {
@@ -390,7 +391,7 @@
 		reg = <0x1e100000 0x10000>;
 
 		clocks = <&sysc MT7621_CLK_FE>, <&sysc MT7621_CLK_ETH>;
-		clock-names = "fe", "eth";
+		clock-names = "fe", "ethif";
 
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -471,13 +472,6 @@
                                                 cpu = <&cpu_port0>;
 					};
 
-					port@4 {
-						status = "disabled";
-						reg = <4>;
-						label = "wan";
-                                                cpu = <&cpu_port0>;
-					};
-
 					cpu_port0: port@6 {
 						reg = <6>;
                                                 label = "cpu";
@@ -537,8 +531,6 @@
 		ranges = <0x02000000 0 0x60000000 0x60000000 0 0x10000000>, /* pci memory */
 			 <0x01000000 0 0x00000000 0x1e160000 0 0x00010000>; /* io space */
 
-		status = "disabled";
-
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xF800 0 0 0>;
 		interrupt-map = <0x0000 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>,
@@ -547,15 +539,18 @@
 
 		reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
 
+		status = "disabled";
+
 		pcie0: pcie@0,0 {
-			reg = <0x0000 0 0 0 0>;
 			#address-cells = <3>;
 			#size-cells = <2>;
-			device_type = "pci";
-			bus-range = <0x00 0xff>;
-			ranges;
 			#interrupt-cells = <1>;
-			interrupt-map-mask = <0x0000 0 0 0>;
+			reg = <0x0000 0 0 0 0>;
+			device_type = "pci";
+		        interrupt-parent = <&gic>;
+		        interrupts = <GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>,
+                        interrupt-names = "pcie0";			
+			interrupt-map-mask = <0 0 0 0>;
 			interrupt-map = <0 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>;
 			resets = <&rstctrl 24>;
 			reset-names = "pcie0";
@@ -563,17 +558,19 @@
 			clock-names = "pcie0";
 			phys = <&pcie0_phy 1>;
 			phy-names = "pcie-phy0";
+			ranges;
 		};
 
 		pcie1: pcie@1,0 {
-			reg = <0x0800 0 0 0 0>;
 			#address-cells = <3>;
 			#size-cells = <2>;
-			device_type = "pci";
-			bus-range = <0x00 0xff>;
-			ranges;
 			#interrupt-cells = <1>;
-			interrupt-map-mask = <0x0000 0 0 0>;
+			reg = <0x0800 0 0 0 0>;
+			device_type = "pci";
+		        interrupt-parent = <&gic>;
+		        interrupts = <GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+                        interrupt-names = "pcie1";
+			interrupt-map-mask = <0 0 0 0>;
 			interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
 			resets = <&rstctrl 25>;
 			reset-names = "pcie1";
@@ -581,17 +578,19 @@
 			clock-names = "pcie1";
 			phys = <&pcie0_phy 1>;
 			phy-names = "pcie-phy1";
+			ranges;
 		};
 
 		pcie2: pcie@2,0 {
-			reg = <0x1000 0 0 0 0>;
 			#address-cells = <3>;
 			#size-cells = <2>;
-			device_type = "pci";
-			bus-range = <0x00 0xff>;
-			ranges;
 			#interrupt-cells = <1>;
-			interrupt-map-mask = <0x0000 0 0 0>;
+			reg = <0x1000 0 0 0 0>;
+			device_type = "pci";
+			interrupt-parent = <&gic>;
+		        interrupts = <GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+                        interrupt-names = "pcie2";
+			interrupt-map-mask = <0 0 0 0>;
 			interrupt-map = <0 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
 			resets = <&rstctrl 26>;
 			reset-names = "pcie2";
@@ -599,6 +598,7 @@
 			clock-names = "pcie2";
 			phys = <&pcie2_phy 0>;
 			phy-names = "pcie-phy2";
+			ranges;
 		};
 	};
 
@@ -618,8 +618,7 @@
 
 	xhci: xhci@1e1c0000 {
 		compatible = "mediatek,mt8173-xhci";
-		reg = <0x1e1c0000 0x1000
-		       0x1e1d0700 0x0100>;
+		reg = <0x1e1c0000 0x1000>, <0x1e1d0700 0x0100>;
 		reg-names = "mac", "ippc";
 
 		clocks = <&sysc MT7621_CLK_XTAL>;
