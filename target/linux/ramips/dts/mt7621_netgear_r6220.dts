@@ -223,9 +223,6 @@
 
 &gmac1 {
 	status = "okay";
-	label = "wan";
-	phy-handle = <&ethphy4>;
-
 	nvmem-cells = <&macaddr_factory_4 1>;
 	nvmem-cell-names = "mac-address";
 };
@@ -258,6 +255,11 @@
 			label = "lan1";
 			nvmem-cells = <&macaddr_factory_4 5>;
 			nvmem-cell-names = "mac-address";
+		};
+
+		port@4 {
+			status = "okay";
+			label = "wan";
 		};
 	};
 };
