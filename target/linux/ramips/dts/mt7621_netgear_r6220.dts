@@ -175,12 +175,6 @@
 	};
 };
 
-&mdio {
-	ethphy4: ethernet-phy@4 {
-		reg = <4>;
-	};
-};
-
 &pcie {
 	status = "okay";
 };
