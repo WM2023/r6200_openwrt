@@ -175,6 +175,12 @@
 	};
 };
 
+&mdio {
+	ethphy4: ethernet-phy@4 {
+	reg = <4>;
+	};
+};
+
 &pcie {
 	status = "okay";
 };
@@ -210,15 +216,10 @@
 	};
 };
 
-&gmac0 {
-	nvmem-cells = <&macaddr_factory_4 2>;
-	nvmem-cell-names = "mac-address";
-};
-
 &gmac1 {
 	status = "okay";
-	nvmem-cells = <&macaddr_factory_4 1>;
-	nvmem-cell-names = "mac-address";
+	label = "wan";
+	phy-handle = <&ethphy4>;
 };
 
 &switch0 {
