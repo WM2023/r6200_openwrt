@@ -205,7 +205,7 @@
 
 &state_default {
 	gpio {
-		groups = "uart3", "uart2", "jtag", "wdt";
+		groups = "uart3", "uart2", "jtag";
 		function = "gpio";
 	};
 };
@@ -243,8 +243,6 @@
 		port@4 {
 			status = "okay";
 			label = "wan";
-			nvmem-cells = <&macaddr_factory_4 2>;
-			nvmem-cell-names = "mac-address";
 		};
 	};
 };
