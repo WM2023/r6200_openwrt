@@ -361,7 +361,7 @@
 
 	ethernet: ethernet@1e100000 {
 		compatible = "mediatek,mt7621-eth";
-		reg = <0x1e100000 0xe000 0x1e110000 0x8000>;
+		reg = <0x1e100000 0xe000>;
 		clocks = <&sysc MT7621_CLK_FE &sysc MT7621_CLK_ETH>;
 		clock-names = "fe", "eth";
 		resets = <&rstctrl 6 &rstctrl 23>;
@@ -379,9 +379,9 @@
 		gmac0: mac@0 {
 			compatible = "mediatek,eth-mac";
 			reg = <0>;
-			phy-mode = "trgmii";
-			nvmem-cells = <&macaddr_factory_4 2>;
-	        nvmem-cell-names = "mac-address";
+			phy-mode = "rgmii";
+			nvmem-cells = <&macaddr_factory_4 0>;
+	                nvmem-cell-names = "mac-address";
 			fixed-link {
 			    speed = <1000>;
 			    full-duplex;
@@ -394,8 +394,11 @@
 			reg = <1>;
 			phy-mode = "rgmii";
 			nvmem-cells = <&macaddr_factory_4 1>;
-	        nvmem-cell-names = "mac-address";
-			status = "disabled";
+	                nvmem-cell-names = "mac-address";
+			fixed-link {
+				speed = <1000>;
+				full-duplex;
+				pause;
 		};
 
 		mdio: mdio-bus {
@@ -421,37 +424,52 @@
 						status = "disabled";
 						reg = <0>;
 						label = "lan4";
+						cpu = <&cpu_port0>;
 					};
 
 					port@1 {
 						status = "disabled";
 						reg = <1>;
 						label = "lan3";
+						cpu = <&cpu_port0>;
 					};
 
 					port@2 {
 						status = "disabled";
 						reg = <2>;
 						label = "lan2";
+						cpu = <&cpu_port0>;
 					};
 
 					port@3 {
 						status = "disabled";
 						reg = <3>;
 						label = "lan1";
+						cpu = <&cpu_port0>;
 					};
 
 					port@4 {
 						status = "disabled";
 						reg = <4>;
 						label = "wan";
-						ethernet = <&gmac1>;
-						phy-mode = "rgmii";
+						cpu = <&cpu_port1>;
 					};
 
-					port@6 {
+					cpu_port1: port@5 {
+						reg = <5>;
+                                                label = "cpu1";
+						ethernet = <&gmac1>;
+						phy-mode = "rgmii";
+
+						fixed-link {
+						    speed = <1000>;
+						    full-duplex;
+						    pause;
+						};	
+
+					cpu_port0: port@6 {
 						reg = <6>;
-                                                label = "cpu";
+                                                label = "cpu0";
 						ethernet = <&gmac0>;
 						phy-mode = "trgmii";
 
