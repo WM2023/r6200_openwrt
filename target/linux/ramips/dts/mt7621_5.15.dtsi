@@ -526,9 +526,8 @@
 		#address-cells = <3>;
 		#size-cells = <2>;
 
-		ranges = <0x42000000 0 0x1e10e000 0x1e10e000 0 0x00002000
-		          0x02000000 0 0x60000000 0x60000000 0 0x10000000
-			  0x01000000 0 0x00000000 0x1e800000 0 0x00400000>;
+		ranges = <0x01000000 0 0x00000000 0x1e600000 0 0x0000fffd 
+			  0x02000000 0 0x60000000 0x60000000 0 0x0ffffffd>;
 
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xFF800 0 0 1>;
