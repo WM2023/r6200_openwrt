@@ -1,0 +1,11 @@
+--- a/drivers/mtd/nand/raw/mt7621_nand.c
++++ b/drivers/mtd/nand/raw/mt7621_nand.c
+@@ -1302,7 +1302,7 @@ static int mt7621_nfc_probe(struct platform_device *pdev)
+		return ret;
+	}
+
+-	nfc->nfi_clk = devm_clk_get(dev, "nfi_clk");
++	nfc->nfi_clk = devm_clk_get(dev, "nand");
+	if (IS_ERR(nfc->nfi_clk)) {
+		dev_warn(dev, "nfi clk not provided\n");
+		nfc->nfi_clk = NULL;
