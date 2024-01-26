@@ -393,7 +393,8 @@
 			compatible = "mediatek,eth-mac";
 			reg = <1>;
 			phy-mode = "rgmii-txid";
-		        phy-handle = <&phy4>;
+		        phy-handle = <&ethphy4>;
+                        label = "wan";
 			nvmem-cells = <&macaddr_factory_4 1>;
 	                nvmem-cell-names = "mac-address";
 		};
@@ -402,7 +403,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-		        phy4: ethernet-phy@4 {
+		        ethphy4: ethernet-phy@4 {
 			        reg = <4>;
 		        };
 
@@ -440,12 +441,6 @@
 						status = "disabled";
 						reg = <3>;
 						label = "lan1";
-					};
-
-					port@4 {
-						status = "disabled";
-						reg = <4>;
-						label = "wan";
 					};
 
 					port@6 {
