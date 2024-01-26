@@ -101,12 +101,12 @@
 		gpio: gpio@600 {
 			compatible = "mediatek,mt7621-gpio";
 			reg = <0x600 0x100>;
-			interrupt-parent = <&gic>;
-			interrupts = <GIC_SHARED 12 IRQ_TYPE_LEVEL_HIGH>;
 			gpio-controller;
 			#gpio-cells = <2>;
 			gpio-ranges = <&pinctrl 0 0 95>;
 			interrupt-controller;
+			interrupt-parent = <&gic>;
+			interrupts = <GIC_SHARED 12 IRQ_TYPE_LEVEL_HIGH>;
 			#interrupt-cells = <2>;
 		};
 
