@@ -402,6 +402,10 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
+		        phy4: ethernet-phy@4 {
+			        reg = <4>;
+		        };
+
 			switch0: switch@1f {
 				compatible = "mediatek,mt7621";
 				reg = <0x1f>;
