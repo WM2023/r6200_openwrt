@@ -239,10 +239,5 @@
 			nvmem-cells = <&macaddr_factory_4 5>;
 			nvmem-cell-names = "mac-address";
 		};
-
-		port@4 {
-			status = "okay";
-			label = "wan";
-		};
 	};
 };
