@@ -478,7 +478,6 @@
         pinctrl-0 = <&sdhci_pins>;
         pinctrl-1 = <&sdhci_pins>;
  
-        status = "disabled";
     };
 
     pcie: pcie@1e140000 {
