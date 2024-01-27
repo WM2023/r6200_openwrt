@@ -1,6 +1,6 @@
 --- a/drivers/pinctrl/ralink/pinctrl-mt7621.c
 +++ b/drivers/pinctrl/ralink/pinctrl-mt7621.c
-@@ -39,12 +39,12 @@ static struct ralink_pmx_func i2c_grp[] =  { FUNC("i2c", 0, 3, 2) };
+@@ -39,12 +39,12 @@ static struct ralink_pmx_func i2c_grp[] 
   static struct ralink_pmx_func uart3_grp[] = {
   	FUNC("uart3", 0, 5, 4),
   	FUNC("i2s", 2, 5, 4),
@@ -15,7 +15,7 @@
   };
   static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 13, 5) };
   static struct ralink_pmx_func wdt_grp[] = {
-@@ -55,15 +55,18 @@ static struct ralink_pmx_func pcie_rst_grp[] = {
+@@ -55,15 +55,18 @@ static struct ralink_pmx_func pcie_rst_g
   	FUNC("pcie rst", MT7621_GPIO_MODE_PCIE_RST, 19, 1),
   	FUNC("pcie refclk", MT7621_GPIO_MODE_PCIE_REF, 19, 1)
   };
