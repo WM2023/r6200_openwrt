@@ -175,10 +175,6 @@
     };
 };
 
-&pcie {
-    status = "okay";
-};
-
 &pcie0 {
     wifi@0,0 { 
         #address-cells = <3>;
