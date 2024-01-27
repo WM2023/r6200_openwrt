@@ -495,8 +495,8 @@
         device_type = "pci";
         bus-range = <0x00 0xff>;
 
-        phys = <&pcie0_phy 2>, <&pcie1_phy 2>, <&pcie2_phy 2>;
-        phy-names = "pcie-phy0", "pcie-phy1", "pcie-phy2";
+        phys = <&pcie0_phy 2>, <&pcie2_phy 2>;
+        phy-names = "pcie-phy0", "pcie-phy2";
 
         #address-cells = <3>;
         #size-cells = <2>;
