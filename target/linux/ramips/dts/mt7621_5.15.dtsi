@@ -477,7 +477,8 @@
         pinctrl-names = "default", "state_uhs";
         pinctrl-0 = <&sdhci_pins>;
         pinctrl-1 = <&sdhci_pins>;
- 
+
+        status = "disabled";
     };
 
     pcie: pcie@1e140000 {
@@ -507,8 +508,6 @@
         interrupt-map = <0x10000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH 
             0x21000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH 
             0x30800 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
-
-        status = "disabled";
 
         pcie0: pcie@0,0 {
             #address-cells = <3>;
