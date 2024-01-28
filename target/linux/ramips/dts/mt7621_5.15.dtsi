@@ -500,8 +500,8 @@
         #interrupt-cells = <1>;
         interrupt-map-mask = <0xf800 0 0 1>;
         interrupt-map = <0x0000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>, 
-            <0x0800 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>, 
-            <0x1000 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+            <0x0800 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>, 
+            <0x1000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
 
         pcie0: pcie@0,0 {
             #address-cells = <3>;
