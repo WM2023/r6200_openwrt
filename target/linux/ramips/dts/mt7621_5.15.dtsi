@@ -331,7 +331,7 @@
         pcie_pins: pcie0-pins {
             pinmux {
                 groups = "pcie";
-                function = "pcie rst", "pcie refclk";
+                function = "gpio";
             };
         };
 
@@ -515,11 +515,11 @@
             resets = <&rstctrl 24>;
             reset-names = "pcie0";
             device_type = "pci";
-            bus-range = <0x01 0xff>;
+            bus-range = <0x00 0xff>;
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>;
-            phys = <&pcie0_phy 1>;
+            phys = <&pcie0_phy 2>;
             phy-names = "pcie-phy0";
             ranges;
         };
@@ -533,11 +533,11 @@
             resets = <&rstctrl 25>;
             reset-names = "pcie1";
             device_type = "pci";
-            bus-range = <0x03 0xff>;
+            bus-range = <0x00 0xff>;
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
-            phys = <&pcie0_phy 1>;
+            phys = <&pcie0_phy 2>;
             phy-names = "pcie-phy1";
             ranges;
         };
@@ -551,11 +551,11 @@
             resets = <&rstctrl 26>;
             reset-names = "pcie2";
             device_type = "pci";
-            bus-range = <0x02 0xff>;
+            bus-range = <0x00 0xff>;
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
-            phys = <&pcie2_phy 0>;
+            phys = <&pcie2_phy 2>;
             phy-names = "pcie-phy2";
             ranges;
         };
