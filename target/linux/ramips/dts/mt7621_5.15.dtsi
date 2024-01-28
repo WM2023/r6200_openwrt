@@ -486,17 +486,10 @@
         reg = <0x1e140000 0x100 0x1e142000 0x100 0x1e143000 0x100 0x1e144000 0x100>;
         reg-names = "subsys", "port0", "port1", "port2";
 
-        clocks = <&sysc MT7621_CLK_PCIE0 &sysc MT7621_CLK_PCIE1 &sysc MT7621_CLK_PCIE2>;
-        clock-names = "pcie0", "pcie1", "pcie2";
-        resets = <&rstctrl 24 &rstctrl 25 &rstctrl 26>;
-        reset-names = "pcie0", "pcie1", "pcie2";
         reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
 
         device_type = "pci";
         bus-range = <0x00 0xff>;
-
-        phys = <&pcie0_phy 2>, <&pcie2_phy 2>;
-        phy-names = "pcie-phy0", "pcie-phy2";
 
         #address-cells = <3>;
         #size-cells = <2>;
@@ -505,44 +498,62 @@
             <0x01000000 0 0x00000000 0x1e160000 0 0x00010000>;
 
         #interrupt-cells = <1>;
-        interrupt-map-mask = <0xFF800 0 0 1>;
-        interrupt-map = <0x10000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH 
-            0x21000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH 
-            0x30800 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+        interrupt-map-mask = <0xf800 0 0 0>;
+        interrupt-map = <0x0000 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>, 
+            <0x1000 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>, 
+            <0x0800 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
 
         pcie0: pcie@0,0 {
             #address-cells = <3>;
             #size-cells = <2>;
-            reg = <0x10000 0 0 0 0>;
+            reg = <0x0000 0 0 0 0>;
+            clocks = <&sysc MT7621_CLK_PCIE0>;
+            clock-names = "pcie0";
+            resets = <&rstctrl 24>;
+            reset-names = "pcie0";
             device_type = "pci";
             bus-range = <0x01 0xff>;
             #interrupt-cells = <1>;
-            interrupt-map-mask = <0 0 0 1>;
-            interrupt-map = <0 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>;
+            interrupt-map-mask = <0 0 0 0>;
+            interrupt-map = <0 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>;
+			phys = <&pcie0_phy 2>;
+			phy-names = "pcie-phy0";
             ranges;
         };
 
         pcie1: pcie@1,0 {
             #address-cells = <3>;
             #size-cells = <2>;
-            reg = <0x30800 0 0 0 0>;
+            reg = <0x1000 0 0 0 0>;
+            clocks = <&sysc MT7621_CLK_PCIE1>;
+            clock-names = "pcie1";
+            resets = <&rstctrl 25>;
+            reset-names = "pcie1";
             device_type = "pci";
             bus-range = <0x03 0xff>;
             #interrupt-cells = <1>;
-            interrupt-map-mask = <0 0 0 1>;
-            interrupt-map = <0 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+            interrupt-map-mask = <0 0 0 0>;
+            interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+            phys = <&pcie0_phy 2>;
+            phy-names = "pcie-phy1";
             ranges;
         };
 
         pcie2: pcie@2,0 {
             #address-cells = <3>;
             #size-cells = <2>;
-            reg = <0x21000 0 0 0 0>;
+            reg = <0x0800 0 0 0 0>;
+            clocks = <&sysc MT7621_CLK_PCIE2>;
+            clock-names = "pcie2";
+            resets = <&rstctrl 26>;
+            reset-names = "pcie2";
             device_type = "pci";
             bus-range = <0x02 0xff>;
             #interrupt-cells = <1>;
-            interrupt-map-mask = <0 0 0 1>;
-            interrupt-map = <0 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+            interrupt-map-mask = <0 0 0 0>;
+            interrupt-map = <0 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+            phys = <&pcie2_phy 2>;
+            phy-names = "pcie-phy2";
             ranges;
         };
     };
