@@ -361,7 +361,7 @@
         clocks = <&sysc MT7621_CLK_FE &sysc MT7621_CLK_ETH>;
         clock-names = "fe", "eth";
         resets = <&rstctrl 6 &rstctrl 23>;
-          reset-names = "fe", "eth";
+        reset-names = "fe", "eth";
         interrupt-parent = <&gic>;
         interrupts = <GIC_SHARED 3 IRQ_TYPE_LEVEL_HIGH>;
 
