@@ -498,10 +498,10 @@
             <0x01000000 0 0x00000000 0x1e160000 0 0x00010000>;
 
         #interrupt-cells = <1>;
-        interrupt-map-mask = <0xf800 0 0 1>;
-        interrupt-map = <0x0000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>, 
-            <0x0800 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>, 
-            <0x1000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+        interrupt-map-mask = <0xf800 0 0 0>;
+        interrupt-map = <0x0000 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>, 
+            <0x0800 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>, 
+            <0x1000 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
 
         pcie0: pcie@0,0 {
             #address-cells = <3>;
@@ -516,7 +516,7 @@
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>;
-            phys = <&pcie0_phy 2>;
+            phys = <&pcie0_phy 1>;
             phy-names = "pcie-phy0";
             ranges;
         };
@@ -534,7 +534,7 @@
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
-            phys = <&pcie0_phy 2>;
+            phys = <&pcie0_phy 1>;
             phy-names = "pcie-phy1";
             ranges;
         };
@@ -552,7 +552,7 @@
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
-            phys = <&pcie2_phy 2>;
+            phys = <&pcie2_phy 0>;
             phy-names = "pcie-phy2";
             ranges;
         };
