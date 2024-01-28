@@ -484,7 +484,7 @@
     pcie: pcie@1e140000 {
         compatible = "mediatek,mt7621-pci";
         reg = <0x1e140000 0x100 0x1e142000 0x100 0x1e143000 0x100 0x1e144000 0x100>;
-        reg-names = "subsys", "port0", "port1", "port2";
+        reg-names = "pciesys", "pcie0", "pcie1", "pcie2";
 
         reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
 
