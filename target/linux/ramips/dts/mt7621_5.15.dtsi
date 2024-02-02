@@ -534,6 +534,8 @@
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
+            phys = <&pcie2_phy 0>;
+            phy-names = "pcie-phy1";
             ranges;
         };
 
