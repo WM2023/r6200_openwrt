@@ -549,7 +549,6 @@
             reset-names = "pcie2";
             device_type = "pci";
             bus-range = <0x00 0xff>;
-            max-link-speed = <1>;
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
