@@ -96,58 +96,152 @@
         partition@0 {
            label = "u-boot";
             reg = <0x0 0x100000>;
+            sercomm,scpart-id = <0>;
             read-only;
         };
 
         partition@100000 {
             label = "SC PID";
             reg = <0x100000 0x100000>;
+            sercomm,scpart-id = <1>;
             read-only;
         };
 
         partition@200000 {
             label = "kernel";
             reg = <0x200000 0x400000>;
+            sercomm,scpart-id = <2>;
         };
 
         partition@600000 {
             label = "ubi";
             reg = <0x600000 0x1c00000>;
+            sercomm,scpart-id = <3>;
+        };
+
+        partition@2200000 {
+            label = "English UI";
+            reg = <0x2200000 0x200000>;
+            sercomm,scpart-id = <4>;
+            read-only;
+        };
+
+        partition@2400000 {
+            label = "ML1";
+            reg = <0x2400000 0x200000>;
+            sercomm,scpart-id = <5>;
+            read-only;
+        };
+
+        partition@2600000 {
+            label = "ML2";
+            reg = <0x2600000 0x200000>;
+            sercomm,scpart-id = <6>;
+            read-only;
+        };
+
+        partition@2800000 {
+            label = "ML3";
+            reg = <0x2800000 0x200000>;
+            sercomm,scpart-id = <7>;
+            read-only;
+        };
+
+        partition@2a00000 {
+            label = "ML4";
+            reg = <0x2a00000 0x200000>;
+            sercomm,scpart-id = <8>;
+            read-only;
+        };
+
+        partition@2c00000 {
+            label = "ML5";
+            reg = <0x2c00000 0x200000>;
+            sercomm,scpart-id = <9>;
+            read-only;
         };
 
         factory: partition@2e00000 {
             label = "factory";
             reg = <0x2e00000 0x100000>;
+            sercomm,scpart-id = <10>;
+            read-only;
+        };
+
+        partition@2f00000 {
+            label = "SC Private Data";
+            reg = <0x2f00000 0x100000>;
+            sercomm,scpart-id = <11>;
+            read-only;
+        };
+
+        partition@3000000 {
+            label = "POT";
+            reg = <0x3000000 0x200000>;
+            sercomm,scpart-id = <12>;
             read-only;
         };
 
         partition@3200000 {
             label = "Traffic Meter";
             reg = <0x3200000 0x200000>;
+            sercomm,scpart-id = <13>;
+            read-only;
+        };
+
+        partition@3400000 {
+            label = "DPF";
+            reg = <0x3400000 0x200000>;
+            sercomm,scpart-id = <14>;
+            read-only;
+        };
+
+        partition@3600000 {
+            label = "SC Nvram";
+            reg = <0x3600000 0x200000>;
+            sercomm,scpart-id = <15>;
             read-only;
         };
 
         partition@3800000 {
             label = "Ralink Nvram";
             reg = <0x3800000 0x200000>;
+            sercomm,scpart-id = <16>;
             read-only;
         };
 
-        partition@3A00000 {
+        partition@3a00000 {
             label = "Ralink Reserved";
-            reg = <0x3A00000 0x200000>;
+            reg = <0x3a00000 0x200000>;
+            sercomm,scpart-id = <17>;
+            read-only;
+        };
+
+        partition@3c00000 {
+            label = "ML6";
+            reg = <0x3c00000 0x200000>;
+            sercomm,scpart-id = <18>;
+            read-only;
+        };
+
+        partition@3e00000 {
+            label = "Upgrade Flag";
+            reg = <0x3e00000 0x200000>;
+            sercomm,scpart-id = <19>;
             read-only;
         };
 
         partition@4000000 {
-            label = "Reserved Block";
+            label = "Reserved Block3";
             reg = <0x4000000 0x200000>;
+            sercomm,scpart-id = <20>;
             read-only;
         };
 
         partition@4200000 {
-            label = "reserved";
+            label = "Reserved Block4";
             reg = <0x4200000 0x3c00000>;
+            sercomm,scpart-id = <21>;
             read-only;
         };
     };
@@ -176,6 +270,18 @@
 };
 
 &pcie0 {
+    wifi@0,0 { 
+        #address-cells = <3>;
+        #size-cells = <2>;
+        compatible = "mediatek,mt76";
+        reg = <0x0 0 0 0 0>;
+        ieee80211-freq-limit = <5000000 6000000>;
+        nvmem-cells = <&eeprom_factory_8000>, <&macaddr_factory_4 4>;
+        nvmem-cell-names = "eeprom", "mac-address";
+    };
+};
+
+&pcie1 {
     wifi@0,0 { 
         #address-cells = <3>;
         #size-cells = <2>;
