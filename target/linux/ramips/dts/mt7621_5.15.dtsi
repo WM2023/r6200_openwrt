@@ -531,7 +531,7 @@
             resets = <&rstctrl 25>;
             reset-names = "pcie1";
             device_type = "pci";
-            bus-range = <0x01 0xff>;
+            bus-range = <0x00 0xff>;
             #interrupt-cells = <1>;
             interrupt-map-mask = <0 0 0 0>;
             interrupt-map = <0 0 0 0 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>;
