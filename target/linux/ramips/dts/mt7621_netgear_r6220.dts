@@ -286,7 +286,7 @@
         #address-cells = <3>;
         #size-cells = <2>;
         compatible = "mediatek,mt76";
-       reg = <0x0 0 0 0 0>;
+        reg = <0x0 0 0 0 0>;
         ieee80211-freq-limit = <2400000 2500000>;
         nvmem-cells = <&eeprom_factory_0>, <&macaddr_factory_4 3>;
         nvmem-cell-names = "eeprom", "mac-address";
