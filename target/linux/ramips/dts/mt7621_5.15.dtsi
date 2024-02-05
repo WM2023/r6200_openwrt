@@ -315,30 +315,30 @@
         };
 
         mdio_pins: mdio {
-			mdio {
-				groups = "mdio";
-				function = "mdio";
-			};
-		};
+            mdio {
+                groups = "mdio";
+                function = "mdio";
+            };
+        };
 
-		pcie_pins: pcie {
-			pcie {
-				groups = "pcie";
-				function = "gpio";
-			};
-		};
+        pcie_pins: pcie {
+            pcie {
+                groups = "pcie";
+                function = "gpio";
+            };
+        };
 
-		nand_pins: nand {
-			spi-nand {
-				groups = "spi";
-				function = "nand1";
-			};
+        nand_pins: nand {
+            spi-nand {
+                groups = "spi";
+                function = "nand1";
+            };
 
-			sdhci-nand {
-				groups = "sdhci";
-				function = "nand2";
-			};
-		};
+        sdhci-nand {
+                groups = "sdhci";
+                function = "nand2";
+            };
+        };
 
         sdhci_pins: sdhci0-pins {
             pinmux {
