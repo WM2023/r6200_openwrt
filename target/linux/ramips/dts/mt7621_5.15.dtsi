@@ -314,29 +314,24 @@
             };
         };
 
-        mdio_pins: mdio {
+        mdio_pins: mdio0-pins {
             mdio {
                 groups = "mdio";
                 function = "mdio";
             };
         };
 
-        pcie_pins: pcie {
+        pcie_pins: pcie0-pins {
             pcie {
                 groups = "pcie";
                 function = "gpio";
             };
         };
 
-        nand_pins: nand {
-            spi-nand {
-                groups = "spi";
-                function = "nand1";
-            };
-
-            sdhci-nand {
-                groups = "sdhci";
-                function = "nand2";
+        nand_pins: nand0-pins {
+            pinmux {
+                groups = "spi", "sdhci";
+                function = "nand";
             };
         };
 
