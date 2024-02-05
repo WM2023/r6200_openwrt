@@ -334,7 +334,7 @@
                 function = "nand1";
             };
 
-        sdhci-nand {
+            sdhci-nand {
                 groups = "sdhci";
                 function = "nand2";
             };
