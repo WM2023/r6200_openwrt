@@ -324,7 +324,7 @@
         wdt_pins: wdt0-pins {
             pinmux {
                 groups = "wdt";
-                function = "wdt rst", "wdt refclk";
+                function = "gpio";
             };
         };
 
