@@ -15,3 +15,17 @@
  };
  static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 13, 5) };
  static struct ralink_pmx_func wdt_grp[] = {
+@@ -59,11 +59,11 @@ static struct ralink_pmx_func mdio_grp[]
+ static struct ralink_pmx_func rgmii2_grp[] = { FUNC("rgmii2", 0, 22, 12) };
+ static struct ralink_pmx_func spi_grp[] = {
+ 	FUNC("spi", 0, 34, 7),
+-	FUNC("nand1", 2, 34, 7),
++	FUNC("nand", 2, 34, 7),
+ };
+ static struct ralink_pmx_func sdhci_grp[] = {
+ 	FUNC("sdhci", 0, 41, 8),
+-	FUNC("nand2", 2, 41, 8),
++	FUNC("nand", 2, 41, 8),
+ };
+ static struct ralink_pmx_func rgmii1_grp[] = { FUNC("rgmii1", 0, 49, 12) };
+ 
