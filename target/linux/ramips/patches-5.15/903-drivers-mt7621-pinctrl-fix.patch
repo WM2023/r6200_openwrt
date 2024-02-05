@@ -15,25 +15,3 @@
  };
  static struct ralink_pmx_func jtag_grp[] = { FUNC("jtag", 0, 13, 5) };
  static struct ralink_pmx_func wdt_grp[] = {
-@@ -55,15 +55,18 @@ static struct ralink_pmx_func pcie_rst_g
- 	FUNC("pcie rst", MT7621_GPIO_MODE_PCIE_RST, 19, 1),
- 	FUNC("pcie refclk", MT7621_GPIO_MODE_PCIE_REF, 19, 1)
- };
--static struct ralink_pmx_func mdio_grp[] = { FUNC("mdio", 0, 20, 2) };
-+static struct ralink_pmx_func mdio_grp[] = {
-+	FUNC("mdio", 0, 20, 2),
-+	FUNC("mdio refclk", 2, 21, 1) 
-+	};
- static struct ralink_pmx_func rgmii2_grp[] = { FUNC("rgmii2", 0, 22, 12) };
- static struct ralink_pmx_func spi_grp[] = {
- 	FUNC("spi", 0, 34, 7),
--	FUNC("nand1", 2, 34, 7),
-+	FUNC("nand", 2, 34, 7),
- };
- static struct ralink_pmx_func sdhci_grp[] = {
- 	FUNC("sdhci", 0, 41, 8),
--	FUNC("nand2", 2, 41, 8),
-+	FUNC("nand", 2, 41, 8),
- };
- static struct ralink_pmx_func rgmii1_grp[] = { FUNC("rgmii1", 0, 49, 12) };
- 
