@@ -258,7 +258,7 @@
     };
 
     pinctrl: pinctrl {
-        compatible = "ralink,rt2880-pinmux", "ralink,mt7621-pinctrl";
+        compatible = "ralink,rt2880-pinmux";
         pinctrl-names = "default";
         pinctrl-0 = <&state_default>;
 
@@ -329,9 +329,14 @@
         };
 
         nand_pins: nand0-pins {
-            pinmux {
-                groups = "spi", "sdhci";
-                function = "nand";
+            spi_nand-pinmux {
+                groups = "spi";
+                function = "nand1";
+            };
+
+            sd_nand-pinmux {
+                groups = "sdhci";
+                function = "nand2";
             };
         };
 
