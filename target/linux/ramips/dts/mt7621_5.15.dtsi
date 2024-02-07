@@ -486,8 +486,6 @@
 
         device_type = "pci";
         bus-range = <0x00 0xff>;
-        pinctrl-names = "default";
-        pinctrl-0 = <&pcie_pins>;
         reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
 
         #address-cells = <3>;
