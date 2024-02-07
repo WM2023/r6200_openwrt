@@ -294,9 +294,11 @@
 };
 
 &state_default {
-    gpio {
-        groups = "uart3", "uart2", "jtag", "wdt";
-        function = "gpio";
+    gpio: gpio-pins {
+        pinmux {
+            groups = "uart3", "uart2", "jtag", "wdt";
+            function = "gpio";
+        };
     };
 };
 
