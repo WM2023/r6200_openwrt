@@ -1842,14 +1842,23 @@ define Device/netgear_sercomm_nand
 endef
 
 define Device/netgear_r6220
-  $(Device/netgear_sercomm_nand)
+  $(Device/nand)
+  $(Device/uimage-lzma-loader)
+  IMAGES += factory.img kernel.bin rootfs.bin
+  IMAGE/factory.img := pad-extra 2048k | append-kernel | pad-to 6144k | \
+	append-ubi | pad-to $$$$(BLOCKSIZE) | sercom-footer | pad-to 128 | \
+	zip $$$$(SERCOMM_HWNAME).bin | sercom-seal
+  IMAGE/kernel.bin := append-kernel
+  IMAGE/rootfs.bin := append-ubi | check-size
+  DEVICE_VENDOR := NETGEAR
+  DEVICE_PACKAGES := kmod-mt76x2 kmod-mt7603 kmod-usb3 kmod-usb-ledtrig-usbport \
+	-uboot-envtools
   DEVICE_MODEL := R6220
   SERCOMM_HWNAME := R6220
   SERCOMM_HWID := AYA
   SERCOMM_HWVER := A001
-  SERCOMM_SWVER := 0x0086
+  SERCOMM_SWVER := 0x1114
   IMAGE_SIZE := 28672k
-  DEVICE_PACKAGES += kmod-mt76x2
   SUPPORTED_DEVICES += r6220
 endef
 TARGET_DEVICES += netgear_r6220
