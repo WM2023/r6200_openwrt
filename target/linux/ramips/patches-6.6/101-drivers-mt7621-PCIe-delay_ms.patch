@@ -1,0 +1,11 @@
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -60,7 +60,7 @@
+ #define PCIE_PORT_LINKUP		BIT(0)
+ #define PCIE_PORT_CNT			3
+ 
+-#define INIT_PORTS_DELAY_MS		100
++#define INIT_PORTS_DELAY_MS		300
+ #define PERST_DELAY_MS			100
+ 
+ /**

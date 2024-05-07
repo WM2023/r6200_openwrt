@@ -1,0 +1,11 @@
+--- a/drivers/clk/ralink/clk-mt7621.c
++++ b/drivers/clk/ralink/clk-mt7621.c
+@@ -82,7 +82,7 @@ static struct mt7621_gate mt7621_gates[]
+ 	GATE(MT7621_CLK_UART1, "uart1", "50m", BIT(19)),
+ 	GATE(MT7621_CLK_UART2, "uart2", "50m", BIT(20)),
+ 	GATE(MT7621_CLK_UART3, "uart3", "50m", BIT(21)),
+-	GATE(MT7621_CLK_ETH, "eth", "50m", BIT(23)),
++	GATE(MT7621_CLK_ETH, "ethif", "50m", BIT(23)),
+ 	GATE(MT7621_CLK_PCIE0, "pcie0", "125m", BIT(24)),
+ 	GATE(MT7621_CLK_PCIE1, "pcie1", "125m", BIT(25)),
+ 	GATE(MT7621_CLK_PCIE2, "pcie2", "125m", BIT(26)),
