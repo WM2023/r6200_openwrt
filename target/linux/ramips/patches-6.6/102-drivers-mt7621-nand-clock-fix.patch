@@ -4,8 +4,8 @@
 	if (IS_ERR(nfc->ecc_regs))
 		return PTR_ERR(nfc->ecc_regs);
 
--nfc->nfi_clk = devm_clk_get_optional_enabled(dev, "nfi_clk");
-+nfc->nfi_clk = devm_clk_get_optional_enabled(dev, "nand");
+-	nfc->nfi_clk = devm_clk_get_optional_enabled(dev, "nfi_clk");
++	nfc->nfi_clk = devm_clk_get_optional_enabled(dev, "nand");
 	if (IS_ERR(nfc->nfi_clk))
 		return PTR_ERR(nfc->nfi_clk);
 
