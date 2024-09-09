@@ -1,10 +1,11 @@
 --- a/drivers/mtd/nand/raw/mt7621_nand.c
 +++ b/drivers/mtd/nand/raw/mt7621_nand.c
-@@ -1297,6 +1297,6 @@ static int mt7621_nfc_probe(struct platf
- if (IS_ERR(nfc->ecc_regs))
- 	return PTR_ERR(nfc->ecc_regs);
- 
+@@ -1297,7 +1297,7 @@ static int mt7621_nfc_probe(struct platf
+	if (IS_ERR(nfc->ecc_regs))
+		return PTR_ERR(nfc->ecc_regs);
+
 -nfc->nfi_clk = devm_clk_get_optional_enabled(dev, "nfi_clk");
 +nfc->nfi_clk = devm_clk_get_optional_enabled(dev, "nand");
- if (IS_ERR(nfc->nfi_clk))
- 	return PTR_ERR(nfc->nfi_clk);
+	if (IS_ERR(nfc->nfi_clk))
+		return PTR_ERR(nfc->nfi_clk);
+
